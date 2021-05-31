@@ -15,22 +15,22 @@ class Contract:
     
 
 
+class Contracts:
+    def get_top_N_open_contracts(self, open_contracts: list[Contract], renegotiated_contracts: list[int], top_n: int) -> list[int]:
+            
+        renegotiated_set = {*renegotiated_contracts}
 
-def get_top_N_open_contracts(open_contracts: list[Contract], renegotiated_contracts: list[int], top_n: int) -> list[int]:
-        
-    renegotiated_set = {*renegotiated_contracts}
+        contracts_not_renegotiated = [(contract.get_debt(), contract.get_id(), ) for contract in open_contracts 
+                                        if contract.get_id() not in renegotiated_set]
 
-    contracts_not_renegotiated = [(contract.get_debt(), contract.get_id(), ) for contract in open_contracts 
-                                    if contract.get_id() not in renegotiated_set]
+        number_of_contracts_to_return = top_n if len(contracts_not_renegotiated) >= top_n else len(contracts_not_renegotiated) 
 
-    number_of_contracts_to_return = top_n if len(contracts_not_renegotiated) >= top_n else len(contracts_not_renegotiated) 
+        ordered_contracts = sorted(contracts_not_renegotiated,reverse=True)[:number_of_contracts_to_return]
 
-    ordered_contracts = sorted(contracts_not_renegotiated,reverse=True)[:number_of_contracts_to_return]
-
-    top_n_contracts = [id for debt, id in ordered_contracts]
+        top_n_contracts = [id for debt, id in ordered_contracts]
 
 
-    return top_n_contracts
+        return top_n_contracts
 
 
 
@@ -46,7 +46,7 @@ renegotiated = [3, 4]
 
 top_n = 3
 
-actual_open_contracts = get_top_N_open_contracts(open_contracts=contracts_list, renegotiated_contracts=renegotiated, top_n=top_n)
+actual_open_contracts = Contracts().get_top_N_open_contracts(open_contracts=contracts_list, renegotiated_contracts=renegotiated, top_n=top_n)
 
 
 print(actual_open_contracts)
