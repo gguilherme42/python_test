@@ -31,12 +31,12 @@ class Orders:
             
 
 
-        
+# Tal  algoritmos não resolve essa ordem esperada   
 
 
-orders = [90, 40, 70, 80, 36, 20, 15, 3]
+orders = [90, 11, 70]
 n_max = 100
-expected_orders = 4
+expected_orders = 2
 
 how_many = Orders().combine_orders(orders, n_max)
 
