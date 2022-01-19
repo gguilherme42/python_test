@@ -1,29 +1,29 @@
 class Orders:
     def combine_orders(self, requests: list[int], n_max: int) -> int:
-        requests_copy = requests[:]
+        result = requests[:]
         trips_pair = []
 
         
-        while requests_copy:
+        while result:
           
-            highest_value = max(requests_copy)
+            highest_value = max(result)
             
-            smallest_value = min(requests_copy)
+            smallest_value = min(result)
             
             
-            if len(requests_copy) == 1:
-                trips_pair.append((requests_copy[0], 0))
-                requests_copy.remove(requests_copy[0])
+            if len(result) == 1:
+                trips_pair.append((result[0], 0))
+                result.remove(result[0])
 
 
             elif (highest_value + smallest_value) <= n_max:
                 trips_pair.append((highest_value, smallest_value))
-                requests_copy.remove(highest_value)
-                requests_copy.remove(smallest_value)
+                result.remove(highest_value)
+                result.remove(smallest_value)
             
             else: 
                 trips_pair.append((highest_value, 0))
-                requests_copy.remove(highest_value)
+                result.remove(highest_value)
             
         minimum_number_of_trips = len(trips_pair)
         
