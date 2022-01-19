@@ -30,14 +30,3 @@ class Orders:
         return minimum_number_of_trips
 
             
-
-
-
-
-orders = [11, 90,  70, 3, 41, 55]
-n_max = 100
-expected_orders = 3
-
-how_many = Orders().combine_orders(orders, n_max)
-
-assert how_many == expected_orders

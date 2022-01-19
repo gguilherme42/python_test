@@ -12,7 +12,7 @@ class TestQuestion2(unittest.TestCase):
 
     def test_when_the_expected_order_is_2_and_n_max_is_100(self):
         how_many = Orders().combine_orders(self.orders, self.n_max)
-
+        print(how_many)
         self.assertEqual(how_many, self.expected_orders)
 
 
