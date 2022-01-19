@@ -45,7 +45,5 @@ top_n = 3
 
 actual_open_contracts = get_top_N_open_contracts(open_contracts=contracts_list, renegotiated_contracts=renegotiated, top_n=top_n)
 
-
-print(actual_open_contracts)
 expected_open_contracts = [2, 5, 1]
 assert expected_open_contracts == actual_open_contracts
