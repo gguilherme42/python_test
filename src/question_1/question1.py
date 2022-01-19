@@ -12,30 +12,22 @@ class Contract:
 
     def __str__(self):
         return f"id={self.id}, debt={self.debt}"
-    
-
 
 
 def get_top_N_open_contracts(open_contracts: list[Contract], renegotiated_contracts: list[int], top_n: int) -> list[int]:
+
     def not_renegotiated(contract: Contract):
         if contract.get_id() not in renegotiated_contracts:
             return contract.get_debt(), contract.get_id()
-
-    result = map(not_renegotiated, open_contracts)    
     
-    renegotiated_set = {*renegotiated_contracts}
 
-    contracts_not_renegotiated = [(contract.get_debt(), contract.get_id(), ) for contract in open_contracts 
-                                    if contract.get_id() not in renegotiated_set]
+    result = list(filter(not_renegotiated, open_contracts))
 
-    number_of_contracts_to_return = top_n if len(contracts_not_renegotiated) >= top_n else len(contracts_not_renegotiated) 
+    number_of_contracts_to_return = top_n if len(result) >= top_n else len(result) 
 
-    ordered_contracts = sorted(contracts_not_renegotiated,reverse=True)[:number_of_contracts_to_return]
+    result = sorted(result, key=lambda contract: contract.get_debt(), reverse=True)[:number_of_contracts_to_return]
 
-    top_n_contracts = [id for debt, id in ordered_contracts]
-
-
-    return top_n_contracts
+    return [contract.get_id() for contract in result]
 
 
 
