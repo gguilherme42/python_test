@@ -2,7 +2,7 @@ import unittest
 from question1 import Contract, get_top_N_open_contracts
 
 class Question1Test(unittest.TestCase):
-    def setUp(self) -> None:
+    def setUp(self):
         self.contracts_list = [
             Contract(1, 10),
             Contract(2, 100),
