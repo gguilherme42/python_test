@@ -5,7 +5,7 @@ from question2 import Orders
 
 class TestQuestion2(unittest.TestCase):
     def setUp(self):
-        self.orders = [11, 90,  70, 3, 41, 55]
+        self.orders = [70, 30, 10]
         self.n_max = 100
         self.expected_orders = 2
         
