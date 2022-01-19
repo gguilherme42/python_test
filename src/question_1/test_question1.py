@@ -27,6 +27,13 @@ class Question1Test(unittest.TestCase):
         expected_open_contracts = [2, 5, 1, 4]
         self.assertEqual(expected_open_contracts, actual_open_contracts)
 
+    def test_when_there_are_no_open_contracts(self):
+        renegotiated = [1,2,3,4,5]
+        top_n = 3
+        actual_open_contracts = get_top_N_open_contracts(self.contracts_list, renegotiated, top_n)
+
+        expected_open_contracts = []
+        self.assertEqual(expected_open_contracts, actual_open_contracts)
 
 
 if __name__ == "__main__":
