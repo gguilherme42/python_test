@@ -18,7 +18,7 @@ class Contract:
 
 def get_top_N_open_contracts(open_contracts: list[Contract], renegotiated_contracts: list[int], top_n: int) -> list[int]:
     def not_renegotiated(contract: Contract):
-        if contract.get_id() in renegotiated_contracts:
+        if contract.get_id() not in renegotiated_contracts:
             return contract.get_debt(), contract.get_id()
 
     result = map(not_renegotiated, open_contracts)    
